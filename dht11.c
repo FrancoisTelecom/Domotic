@@ -55,8 +55,15 @@ int main(void)
     exit(1);
   while(1)
   {
+    for (int b=0; b < 5 b++){
+      printf("v1,v2 = %d.%d\nv3,v4 = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
+      delay(500);
+    }
     dht11_read_val();
     delay(3000);
+    b=0;
+    }
+
   }
   return 0;
 }
