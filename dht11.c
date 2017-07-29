@@ -78,7 +78,9 @@ int main(void)
   printf("Interfacing Temperature and Humidity Sensor (DHT11) With Raspberry Pi\n");
   if(wiringPiSetup()==-1) exit(1);
   while(1) {
+
     printf("digitalRead= %d\n", digitalRead(DHT11PIN));
+    printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
     /*while ( b < 6 ){
       ("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
 
