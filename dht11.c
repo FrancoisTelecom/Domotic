@@ -19,7 +19,6 @@ void dht11_read_val()
   digitalWrite(DHT11PIN,HIGH);
   delayMicroseconds(40);
   pinMode(DHT11PIN,INPUT);
-  int b =0;
   for(i=0;i<MAX_TIME;i++)
   {
     counter=0;
@@ -53,21 +52,19 @@ void dht11_read_val()
 
 int main(void)
 {
+  int b = 0;
   printf("Interfacing Temperature and Humidity Sensor (DHT11) With Raspberry Pi\n");
-  if(wiringPiSetup()==-1)
-    exit(1);
-  while(1)
-  {
-    while (b<6){
+  if(wiringPiSetup()==-1) exit(1);
+  while(1) {
+    while ( b < 6 ){
       printf("v1,v2 = %d.%d\nv3,v4 = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
       delay(500);
+      b++;
       }
-    }
     dht11_read_val();
     delay(3000);
     b=0;
     }
-
   }
   return 0;
 }
