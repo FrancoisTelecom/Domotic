@@ -6,7 +6,7 @@
 #define DHT11PIN 7
 int dht11_val[5]={0,0,0,0,0};
 
-void write((int a,int b,int c,int d){
+void write(int a,int b,int c,int d){
   FILE* fichier = NULL;
   fichier = fopen("test290720171716", "a+");
   if (fichier != NULL)
