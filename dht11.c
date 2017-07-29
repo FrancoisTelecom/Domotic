@@ -15,11 +15,13 @@ void write(int a,int b,int c,int d){
     fprintf(fichier, "%d", a);
     fputs(".",fichier);
     fprintf(fichier, "%d", b);
+    fputs(" %",fichier);
     fputs("\n",fichier);
     fputs ("Temperature: ",fichier);
     fprintf(fichier, "%d", c);
     fputs(".",fichier);
     fprintf(fichier, "%d", d);
+    fputs("°C",fichier);
     fputs("\n",fichier);
     fclose(fichier);
   }
@@ -68,6 +70,7 @@ void dht11_read_val()
     farenheit=dht11_val[2]*9./5.+32;
 
     printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
+    /*écrit dans le fichier*/
     write(dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
   }
   else
@@ -80,17 +83,8 @@ int main(void)
   printf("Interfacing Temperature and Humidity Sensor (DHT11) With Raspberry Pi\n");
   if(wiringPiSetup()==-1) exit(1);
   while(1) {
-
-    //printf("digitalRead= %d\n", digitalRead(DHT11PIN));
-    //printf("2H = %d.%d\n2T = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
-    /*while ( b < 6 ){
-      ("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
-
-      delay(1000);
-      b++;
-    }*/
      dht11_read_val();
-     delay(3000);
+     delay(5000);
   }
   return 0;
 }
