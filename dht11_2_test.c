@@ -259,6 +259,7 @@ int usage (const char *progName)
 int main(int argc, char *argv[])
 
 {
+	int i;
 
 	if(argc == 3)
 
@@ -332,7 +333,7 @@ int main(int argc, char *argv[])
 
 
 
-		for(int i = 0; i < sampleCount; ++i)
+		for(i = 0; i < sampleCount; ++i)
 
 		{
 
