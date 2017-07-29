@@ -50,13 +50,13 @@ void dht11_read_val()
 }
 int main(void)
 {
-  //  printf("Interfacing Temperature and Humidity Sensor (DHT11) With Raspberry Pi\n");
+  printf("Interfacing Temperature and Humidity Sensor (DHT11) With Raspberry Pi\n");
   if(wiringPiSetup()==-1)
     exit(1);
-  //while(1)
-  //{
-     dht11_read_val();
-     //  delay(3000);
-     //}
+  while(1)
+  {
+    dht11_read_val();
+    delay(3000);
+  }
   return 0;
 }
