@@ -12,12 +12,15 @@ void write(int a,int b,int c,int d){
   if (fichier != NULL)
   {
     fputs ("Humidity: ",fichier);
-    fputc(a, fichier);
-    fputc(a, fichier);
+    fprintf(fichier, "%d", a);
+    fputs(".",fichier);
+    fprintf(fichier, "%d", b);
     fputs("\n",fichier);
     fputs ("Temperature: ",fichier);
-    fputc(c, fichier);
-    fputc(d, fichier);
+    fprintf(fichier, "%d", c);
+    fputs(".",fichier);
+    fprintf(fichier, "%d", d);
+    fputs("\n",fichier);
     fclose(fichier);
   }
   else printf("Impossible d'ouvrir le fichier test.txt");
@@ -65,7 +68,7 @@ void dht11_read_val()
     farenheit=dht11_val[2]*9./5.+32;
 
     printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
-    //write(dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
+    write(dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
   }
   else
     printf("Invalid Data!!\n");
@@ -78,8 +81,8 @@ int main(void)
   if(wiringPiSetup()==-1) exit(1);
   while(1) {
 
-    printf("digitalRead= %d\n", digitalRead(DHT11PIN));
-    printf("2H = %d.%d\n2T = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
+    //printf("digitalRead= %d\n", digitalRead(DHT11PIN));
+    //printf("2H = %d.%d\n2T = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
     /*while ( b < 6 ){
       ("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
 
