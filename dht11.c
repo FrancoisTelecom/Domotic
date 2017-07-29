@@ -1,4 +1,4 @@
-//#include <wiringPi.h>
+#include <wiringPi.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -6,21 +6,22 @@
 #define DHT11PIN 7
 int dht11_val[5]={0,0,0,0,0};
 
-void openFile(char* insert){
+void write((int a,int b,int c,int d){
   FILE* fichier = NULL;
-  fichier = fopen("/data/git/Domotic/output/test290720171716", "a+");
+  fichier = fopen("test290720171716", "a+");
   if (fichier != NULL)
   {
-    fputc(insert,fichier);
+    fputs ("Humidity: ",fichier);
+    fputc(a, fichier);
+    fputc(a, fichier);
+    fputs("\n",fichier);
+    fputs ("Temperature: ",fichier);
+    fputc(c, fichier);
+    fputc(d, fichier);
     fclose(fichier);
   }
-
-    else printf("Impossible d'ouvrir le fichier test.txt");
+  else printf("Impossible d'ouvrir le fichier test.txt");
 }
-fclose(fichier);
-void writeOutput(){
-}
-
 
 void dht11_read_val()
 {
@@ -28,7 +29,6 @@ void dht11_read_val()
   uint8_t counter=0;
   uint8_t j=0,i;
   float farenheit;
-  //char chaine[];
 
   for(i=0;i<5;i++) dht11_val[i]=0; //init 0
   /*init pin rasp*/
@@ -63,9 +63,9 @@ void dht11_read_val()
   if((j>=40)&&(dht11_val[4]==((dht11_val[0]+dht11_val[1]+dht11_val[2]+dht11_val[3])& 0xFF)))
   {
     farenheit=dht11_val[2]*9./5.+32;
+
     //printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
-    char chaine[] = ("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
-    openFile(chaine);
+    write(dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
   }
   else
     printf("Invalid Data!!\n");
