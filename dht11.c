@@ -29,7 +29,6 @@ void dht11_read_val()
   uint8_t counter=0;
   uint8_t j=0,i;
   float farenheit;
-  int dht11_val[5]={0,0,0,0,0};
 
   for(i=0;i<5;i++) dht11_val[i]=0; //init 0
   /*init pin rasp*/
@@ -65,8 +64,8 @@ void dht11_read_val()
   {
     farenheit=dht11_val[2]*9./5.+32;
 
-    //printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
-    write(dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
+    printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
+    //write(dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
   }
   else
     printf("Invalid Data!!\n");
@@ -80,7 +79,7 @@ int main(void)
   while(1) {
 
     printf("digitalRead= %d\n", digitalRead(DHT11PIN));
-    printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
+    printf("2H = %d.%d\n2T = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
     /*while ( b < 6 ){
       ("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
 
@@ -88,7 +87,7 @@ int main(void)
       b++;
     }*/
      dht11_read_val();
-     delay(1500);
+     delay(3000);
   }
   return 0;
 }
