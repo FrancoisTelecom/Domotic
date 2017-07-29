@@ -8,7 +8,7 @@ int dht11_val[5]={0,0,0,0,0};
 
 void write(int a,int b,int c,int d){
   FILE* fichier = NULL;
-  fichier = fopen("test290720171716", "a+");
+  fichier = fopen("test290720171716.txt", "a+");
   if (fichier != NULL)
   {
     fputs ("Humidity: ",fichier);
@@ -29,6 +29,7 @@ void dht11_read_val()
   uint8_t counter=0;
   uint8_t j=0,i;
   float farenheit;
+  int dht11_val[5]={0,0,0,0,0};
 
   for(i=0;i<5;i++) dht11_val[i]=0; //init 0
   /*init pin rasp*/
@@ -74,19 +75,18 @@ void dht11_read_val()
 
 int main(void)
 {
-  int b =0;
-
   printf("Interfacing Temperature and Humidity Sensor (DHT11) With Raspberry Pi\n");
   if(wiringPiSetup()==-1) exit(1);
   while(1) {
+    printf("digitalRead= %d\n", digitalRead(DHT11PIN));
     /*while ( b < 6 ){
       ("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
-      printf("digitalRead= %d\n", digitalRead(DHT11PIN));
+
       delay(1000);
       b++;
     }*/
      dht11_read_val();
-     delay(3000);
+     delay(1500);
   }
   return 0;
 }
