@@ -58,6 +58,7 @@ int main(void)
   while(1) {
     while ( b < 6 ){
       printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
+      printf("digitalRead= %d\n", digitalRead(DHT11PIN));
       delay(1000);
       b++;
     }
