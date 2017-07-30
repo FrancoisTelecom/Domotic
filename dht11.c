@@ -1,4 +1,5 @@
 #include <wiringPi.h>
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -6,23 +7,39 @@
 #define DHT11PIN 7
 int dht11_val[5]={0,0,0,0,0};
 
-void write(int a,int b,int c,int d){
+void date(){
+  char format[128];
+  time_t temps;
+  struct tm date;
+
+  time(&temps);
+  date=*localtime(&temps);
+  strftime(format, 128, "%d%m%Y%H%M\n", &date);
+  //puts(format);
+  puts(format);
   FILE* fichier = NULL;
   fichier = fopen("test290720171716.txt", "a+");
-  if (fichier != NULL)
-  {
+  if (fichier != NULL)  {
+    fprintf(format, "%s\n", );
+    fclose(fichier);
+  }
+}
+
+void write(int a,int b,int c,int d){
+  date();
+  FILE* fichier = NULL;
+  fichier = fopen("test290720171716.txt", "a+");
+  if (fichier != NULL) {
     fputs ("Humidity: ",fichier);
     fprintf(fichier, "%d", a);
     fputs(".",fichier);
     fprintf(fichier, "%d", b);
-    fputs(" %",fichier);
-    fputs("\n",fichier);
+    fputs(" %\n",fichier);
     fputs ("Temperature: ",fichier);
     fprintf(fichier, "%d", c);
     fputs(".",fichier);
     fprintf(fichier, "%d", d);
-    fputs("°C",fichier);
-    fputs("\n",fichier);
+    fputs("°C\n",fichier);
     fclose(fichier);
   }
   else printf("Impossible d'ouvrir le fichier test.txt");
@@ -33,7 +50,6 @@ void dht11_read_val()
   uint8_t lststate=HIGH;
   uint8_t counter=0;
   uint8_t j=0,i;
-  float farenheit;
 
   for(i=0;i<5;i++) dht11_val[i]=0; //init 0
   /*init pin rasp*/
@@ -67,8 +83,6 @@ void dht11_read_val()
   // verify cheksum and print the verified data
   if((j>=40)&&(dht11_val[4]==((dht11_val[0]+dht11_val[1]+dht11_val[2]+dht11_val[3])& 0xFF)))
   {
-    farenheit=dht11_val[2]*9./5.+32;
-
     printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
     /*écrit dans le fichier*/
     write(dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
