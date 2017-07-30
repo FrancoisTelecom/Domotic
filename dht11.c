@@ -20,7 +20,7 @@ void date(){
   FILE* fichier = NULL;
   fichier = fopen("test290720171716.txt", "a+");
   if (fichier != NULL)  {
-    fprintf(format, "%s\n", );
+    fprintf(fichier, "%s\n",format );
     fclose(fichier);
   }
 }
