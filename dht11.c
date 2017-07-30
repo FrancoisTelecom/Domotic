@@ -14,9 +14,7 @@ void date(){
 
   time(&temps);
   date=*localtime(&temps);
-  strftime(format, 128, "%d%m%Y%H%M\n", &date);
-  //puts(format);
-  puts(format);
+  strftime(format, 128, "%d%m%Y%H%M", &date);
   FILE* fichier = NULL;
   fichier = fopen("test290720171716.txt", "a+");
   if (fichier != NULL)  {
@@ -39,7 +37,7 @@ void write(int a,int b,int c,int d){
     fprintf(fichier, "%d", c);
     fputs(".",fichier);
     fprintf(fichier, "%d", d);
-    fputs("°C\n",fichier);
+    fputs("°C\n\n",fichier);
     fclose(fichier);
   }
   else printf("Impossible d'ouvrir le fichier test.txt");
