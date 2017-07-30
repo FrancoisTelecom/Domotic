@@ -16,7 +16,7 @@ void date(){
   date=*localtime(&temps);
   strftime(format, 128, "%d%m%Y%H%M", &date);
   FILE* fichier = NULL;
-  fichier = fopen("test290720171716.txt", "a+");
+  fichier = fopen("30072017.log", "a+");
   if (fichier != NULL)  {
     fprintf(fichier, "%s\n",format );
     fclose(fichier);
@@ -26,7 +26,7 @@ void date(){
 void write(int a,int b,int c,int d){
   date();
   FILE* fichier = NULL;
-  fichier = fopen("test290720171716.txt", "a+");
+  fichier = fopen("30072017.log", "a+");
   if (fichier != NULL) {
     fputs ("Humidity: ",fichier);
     fprintf(fichier, "%d", a);
@@ -40,7 +40,7 @@ void write(int a,int b,int c,int d){
     fputs("°C\n\n",fichier);
     fclose(fichier);
   }
-  else printf("Impossible d'ouvrir le fichier test.txt");
+  else printf("Impossible d'ouvrir le fichier 30072017.log");
 }
 
 void dht11_read_val()
