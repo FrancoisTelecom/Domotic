@@ -98,7 +98,7 @@ int main(void)
   if(wiringPiSetup()==-1) exit(1);
   while(1) {
      dht11_read_val();
-     delay(5000);
+     delay(600000);
   }
   return 0;
 }
