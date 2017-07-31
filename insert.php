@@ -1,6 +1,7 @@
 #! /bin/php
 
 <?php
+class insert{
   private $_bdd;
   public function __construct()	{
   		try {
@@ -10,6 +11,7 @@
         die('Erreur : '.$e->getMessage());
       }
   	}
+}
 
   /*
   $req = $this->_bdd->prepare('SELECT id FROM t_utilisateur WHERE identifiant = :pseudo AND motdepasse = :pass');
