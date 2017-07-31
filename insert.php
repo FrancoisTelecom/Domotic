@@ -11,6 +11,10 @@ class insert{
         die('Erreur : '.$e->getMessage());
       }
   	}
+
+  public function parser(){
+    
+  }
 }
 
   /*
