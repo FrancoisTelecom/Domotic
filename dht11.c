@@ -22,23 +22,11 @@ void date(){
     fclose(fichier);
   }
 }
-void date2(){
-  char format[128];
-  time_t temps;
-  struct tm date;
-
-  time(&temps);
-  date=*localtime(&temps);
-  strftime(format, 128, "%d%m%Y%H%M", &date);
-  fprintf(fichier, "%s\n",format );
-}
-
 void write(int a,int b,int c,int d){
-  //date();
+  date();
   FILE* fichier = NULL;
   fichier = fopen("30072017.log", "a+");
   if (fichier != NULL) {
-    date2();
     fprintf(fichier, "H: %d.%d %\n", a,b);
     fprintf(fichier, "T: %d.%d°C\n", c,d);
     fclose(fichier);
