@@ -28,16 +28,16 @@ void write(int a,int b,int c,int d){
   FILE* fichier = NULL;
   fichier = fopen("30072017.log", "a+");
   if (fichier != NULL) {
-    fputs ("Humidity: ",fichier);
-    fprintf(fichier, "%d", a);
-    fputs(".",fichier);
-    fprintf(fichier, "%d", b);
-    fputs(" %\n",fichier);
-    fputs ("Temperature: ",fichier);
-    fprintf(fichier, "%d", c);
-    fputs(".",fichier);
-    fprintf(fichier, "%d", d);
-    fputs("°C\n\n",fichier);
+    //fputs ("Humidity: ",fichier);
+    fprintf(fichier, "H: %d.%d %\n", a,b);
+    //fputs(".",fichier);
+    //fprintf(fichier, "%d", b);
+    //fputs(" %\n",fichier);
+    //fputs ("Temperature: ",fichier);
+    fprintf(fichier, "T: %d.%d°C\n", c,d);
+    //fputs(".",fichier);
+    //fprintf(fichier, "%d", d);
+    //fputs("°C\n\n",fichier);
     fclose(fichier);
   }
   else printf("Impossible d'ouvrir le fichier 30072017.log");
