@@ -18,7 +18,7 @@ void date(){
   FILE* fichier = NULL;
   fichier = fopen("30072017.log", "a+");
   if (fichier != NULL)  {
-    fprintf(fichier, "%s\n",format );
+    fprintf(fichier, "das1:%s\n",format );
     fclose(fichier);
   }
 }
@@ -27,8 +27,8 @@ void write(int a,int b,int c,int d){
   FILE* fichier = NULL;
   fichier = fopen("30072017.log", "a+");
   if (fichier != NULL) {
-    fprintf(fichier, "H: %d.%d %\n", a,b);
-    fprintf(fichier, "T: %d.%d°C\n", c,d);
+    fprintf(fichier, "hus1: %d.%d %\n", a,b);
+    fprintf(fichier, "tes1: %d.%d°C\n", c,d);
     fclose(fichier);
   }
   else printf("Impossible d'ouvrir le fichier 30072017.log");
@@ -87,7 +87,7 @@ int main(void)
   if(wiringPiSetup()==-1) exit(1);
   while(1) {
      dht11_read_val();
-     delay(600000);/*delay 600kms -> 10min*/
+     delay(600);/*delay 600kms -> 10min*/
   }
   return 0;
 }
