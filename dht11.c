@@ -22,13 +22,13 @@ void date(){
     fclose(fichier);
   }
 }
-void write(int a,int b,int c,int d){
+void write(int a,int c){
   date();
   FILE* fichier = NULL;
   fichier = fopen("30072017.log", "a+");
   if (fichier != NULL) {
-    fprintf(fichier, "hus1: %d.%d %\n", a,b);
-    fprintf(fichier, "tes1: %d.%d°C\n", c,d);
+    fprintf(fichier, "hus1:%d\n",a);
+    fprintf(fichier, "tes1:%d\n",c);
     fclose(fichier);
   }
   else printf("Impossible d'ouvrir le fichier 30072017.log");
@@ -72,9 +72,9 @@ void dht11_read_val()
   // verify cheksum and print the verified data
   if((j>=40)&&(dht11_val[4]==((dht11_val[0]+dht11_val[1]+dht11_val[2]+dht11_val[3])& 0xFF)))
   {
-    printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
+    //printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
     /*écrit dans le fichier*/
-    write(dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
+    write(dht11_val[0],dht11_val[2]);
   }
   else
     printf("Invalid Data!!\n");
@@ -87,7 +87,7 @@ int main(void)
   if(wiringPiSetup()==-1) exit(1);
   while(1) {
      dht11_read_val();
-     delay(600);/*delay 600kms -> 10min*/
+     delay(600000);/*delay 600kms -> 10min*/
   }
   return 0;
 }
