@@ -42,13 +42,13 @@ class insert{
 
           }
       }
-      $sql = $this->_bdd->prepare('INSERT INTO test (dhtPiece,humidite,temperature,datetim) VALUE (:pie,:hu,:te,:da) ');
+      $sql = $this->_bdd->prepare('INSERT INTO dht (dhtPiece,humidite,temperature,datetim) VALUE (:pie,:hu,:te,:da) ');
       $sql->execute(array( 'pie'=> $pie,
                            'hu' => $hu,
                            'te' => $te,
                            'da' => $da));
       printf("requète complete\n");
-      echo "da ".$da."pie ".$pie."hu ".$hu."te ".$te."\n";
+      echo "switch".$rest."da ".$da."pie ".$pie."hu ".$hu."te ".$te."\n";
     //}
       fclose($file);
     }//fin de function
