@@ -7,28 +7,20 @@
 #define DHT11PIN 7
 int dht11_val[5]={0,0,0,0,0};
 
-void date(){
+void write(int a,int c){
   char format[128];
   time_t temps;
   struct tm date;
-
   time(&temps);
   date=*localtime(&temps);
+
   strftime(format, 128, "%d%m%Y%H%M", &date);
   FILE* fichier = NULL;
   fichier = fopen("30072017.log", "a+");
-  if (fichier != NULL)  {
-    fprintf(fichier, "das1:%s\n",format );
-    fclose(fichier);
-  }
-}
-void write(int a,int c){
-  date();
-  FILE* fichier = NULL;
-  fichier = fopen("30072017.log", "a+");
   if (fichier != NULL) {
-    fprintf(fichier, "hus1:%d\n",a);
-    fprintf(fichier, "tes1:%d\n",c);
+    fprintf(fichier, "sal1:%s,%d,%d\n",format,a,c );
+    //fprintf(fichier, "hus1:%d\n",a);
+    //fprintf(fichier, "tes1:%d\n",c);
     fclose(fichier);
   }
   else printf("Impossible d'ouvrir le fichier 30072017.log");
@@ -72,7 +64,6 @@ void dht11_read_val()
   // verify cheksum and print the verified data
   if((j>=40)&&(dht11_val[4]==((dht11_val[0]+dht11_val[1]+dht11_val[2]+dht11_val[3])& 0xFF)))
   {
-    //printf("H = %d.%d\nT = %d.%d\n",dht11_val[0],dht11_val[1],dht11_val[2],dht11_val[3]);
     /*écrit dans le fichier*/
     write(dht11_val[0],dht11_val[2]);
   }
@@ -87,7 +78,7 @@ int main(void)
   if(wiringPiSetup()==-1) exit(1);
   while(1) {
      dht11_read_val();
-     delay(600000);/*delay 600kms -> 10min*/
+     delay(1000);/*delay 600kms -> 10min*/
   }
   return 0;
 }
