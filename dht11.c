@@ -14,7 +14,8 @@ void write(int a,int c){
   time(&temps);
   date=*localtime(&temps);
 
-  strftime(format, 128, "%d%m%Y%H%M", &date);
+  //strftime(format, 128, "%d%m%Y%H%M", &date);
+  strftime(format, 128, "%Y-%m-%d %H:%M", &date);
   FILE* fichier = NULL;
   fichier = fopen("30072017.log", "a+");
   if (fichier != NULL) {
