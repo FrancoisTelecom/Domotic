@@ -2,8 +2,7 @@ language: c
 os :
   -linux
 sudo: false # only for faster builds
-install:
-  -apt-get install git-core
+
 script:
   - clang -coverage -O0 dht11.c -o hello
   - ./hello
