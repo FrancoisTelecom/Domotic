@@ -19,8 +19,6 @@ void write(int a,int c){
   fichier = fopen("30072017.log", "a+");
   if (fichier != NULL) {
     fprintf(fichier, "sal1:%s,%d,%d\n",format,a,c );
-    //fprintf(fichier, "hus1:%d\n",a);
-    //fprintf(fichier, "tes1:%d\n",c);
     fclose(fichier);
   }
   else printf("Impossible d'ouvrir le fichier 30072017.log");

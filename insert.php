@@ -23,17 +23,14 @@ class insert{
   //  while (!feof($file)){
       for ($i=0 ; $i < 4 ; $i++ ) {
         $ligne = fgets($file);
-        $rest = substr($ligne,0,4);
+        $rest = substr($ligne,0,3);
         switch ($rest) {
-          case "das1":
-            $da= substr($ligne,5,16);
-            $piece= substr($ligne,2,3);
-            break;
-          case "hus1":
-            $hu = substr($ligne,6,7);
-            break;
-          case "tes1":
-            $te = substr($ligne,6,7);
+          case 'sal1':
+          $pie = 'sal1';
+          $da = substr($ligne,5,16);
+          $hu = substr($ligne,18,19);
+          $hu = substr($ligne,21,13);
+            # code...
             break;
         /*  case 'has1'
             $ha = substr($ligne,6,7);
