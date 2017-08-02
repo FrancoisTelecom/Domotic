@@ -1,4 +1,8 @@
 language: c
+addons:
+  apt:
+    sources:
+      - git-core
 sudo: false # only for faster builds
 script:
   - clang -coverage -O0 dht11.c -o hello
