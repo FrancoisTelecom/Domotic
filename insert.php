@@ -29,7 +29,7 @@ class insert{
           $pie = 'sal1';
           $da = substr($ligne,5,12);
           $hu = substr($ligne,18,-3);
-          $hu = substr($ligne,21);
+          $te = substr($ligne,21);
             # code...
             break;
         /*  case 'has1'
@@ -48,7 +48,7 @@ class insert{
                            'te' => $te,
                            'da' => $da));
       printf("requète complete\n");
-      echo "switch".$rest."da ".$da."pie ".$pie."hu ".$hu."te ".$te."\n";
+      echo "switch: ".$rest." da ".$da." pie ".$pie." hu ".$hu." te ".$te."\n";
     //}
       fclose($file);
     }//fin de function
