@@ -3,7 +3,7 @@ os :
   -linux
 sudo: false # only for faster builds
 install:
-  -git clone git://git.drogon.net/wiringPi
+  -apt-get install git-core
 script:
   - clang -coverage -O0 dht11.c -o hello
   - ./hello
