@@ -27,9 +27,9 @@ class insert{
         switch ($rest) {
           case 'sal1':
           $pie = 'sal1';
-          $da = substr($ligne,5,12);
-          $hu = substr($ligne,18,-4);
-          $te = substr($ligne,21);
+          $da = substr($ligne,5,16);
+          $hu = substr($ligne,22,-4);
+          $te = substr($ligne,25);
             # code...
             break;
         /*  case 'has1'
