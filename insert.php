@@ -29,7 +29,7 @@ class insert{
           $pie = 'sal1';
           $da = substr($ligne,5,16);
           $hu = substr($ligne,18,19);
-          $hu = substr($ligne,21,13);
+          $hu = substr($ligne,21,22);
             # code...
             break;
         /*  case 'has1'
