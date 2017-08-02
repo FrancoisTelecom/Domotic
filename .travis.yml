@@ -1,9 +1,9 @@
 language: c
-addons:
-  apt:
-    sources:
-      - git-core
+os :
+  -linux
 sudo: false # only for faster builds
+install:
+  -git clone git://git.drogon.net/wiringPi
 script:
   - clang -coverage -O0 dht11.c -o hello
   - ./hello
