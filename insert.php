@@ -26,8 +26,8 @@ class insert{
         $rest = substr($ligne,0,4);
         switch ($rest) {
           case 'sal1':
-          $pie = 'sal1';
-          $da = substr($ligne,5,16);
+          $pie = """."sal1".""";
+          $da = """.substr($ligne,5,16).""";
           $hu = substr($ligne,22,-4);
           $te = substr($ligne,25);
             # code...
