@@ -30,25 +30,22 @@ class insert{
           $da = """.substr($ligne,5,16).""";
           $hu = substr($ligne,22,-4);
           $te = substr($ligne,25);
-            # code...
             break;
-        /*  case 'has1'
-            $ha = substr($ligne,6,7);
-            break;*/
 
           default:
-            # code...
+          echo "Error Data";
             break;
 
-          }
-      }
+          }//switch
+      }//for
       $sql = $this->_bdd->prepare('INSERT INTO dht (dhtPiece,humidite,temperature,datetim) VALUE (:pie,:hu,:te,:da) ');
       $sql->execute(array( 'pie'=> $pie,
                            'hu' => $hu,
                            'te' => $te,
                            'da' => $da));
       printf("requète complete\n");
-      echo "switch: ".$rest." da ".$da." pie ".$pie." hu ".$hu." te ".$te."\n";
+      //echo "switch: ".$rest." da ".$da." pie ".$pie." hu ".$hu." te ".$te."\n";
+      echo $sql."\n";
     //}
       fclose($file);
     }//fin de function
